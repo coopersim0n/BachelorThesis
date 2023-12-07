@@ -38,7 +38,7 @@ fig = plt.figure()          #create a canvas, tell matplotlib it's 3d
 ax = fig.add_subplot(111, projection='3d')
 
 
-hist, xedges, yedges = np.histogram2d(x_pos, np.cos(theta_pos), bins=(50,50))
+hist, xedges, yedges = np.histogram2d(np.cos(theta_pos, x_pos, bins=(50,50))
 xpos, ypos = np.meshgrid(xedges[:-1]+xedges[1:], yedges[:-1]+yedges[1:])
 
 xpos = xpos.flatten()/2.
@@ -59,7 +59,7 @@ plt.savefig("x_cosTheta_muon_pos.png")
 fig = plt.figure()          #create a canvas, tell matplotlib it's 3d
 ax = fig.add_subplot(111, projection='3d')
 
-hist, xedges, yedges = np.histogram2d(x_neg, np.cos(theta_neg), bins=(50,50))
+hist, xedges, yedges = np.histogram2d(np.cos(theta_neg), x_neg, bins=(50,50))
 xpos, ypos = np.meshgrid(xedges[:-1]+xedges[1:], yedges[:-1]+yedges[1:])
 
 xpos = xpos.flatten()/2.
@@ -71,7 +71,7 @@ dy = yedges [1] - yedges [0]
 dz = hist.flatten()
 
 ax.bar3d(xpos, ypos, zpos, dx, dy, dz, zsort='average')
-plt.title(r"$S^{0}(x,cos(\Theta)$ for $\mu^{-}")
+plt.title(r"$S^{0}(x,cos(\Theta)$ for $\mu^{-}$")
 plt.xlabel("x")
 plt.ylabel(r"$cos(\Theta)$")
 plt.savefig("x_cosTheta_muon_neg.png")
