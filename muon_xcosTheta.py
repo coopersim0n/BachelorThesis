@@ -17,7 +17,7 @@ muon_py = np.array(ak.flatten(df["muon_py"]))
 muon_pz = np.array(ak.flatten(df["muon_pz"]))
 muon_energy = np.array(ak.flatten(df["muon_energy"]))
 muon_charge = np.array(ak.flatten(df["muon_charge"]))
-
+print("---calculating x and Theta---")
 #select positively and negatively charges muons
 mask = muon_charge==-1 #True for -1 and False for +1
 
@@ -31,7 +31,7 @@ theta_pos = np.arctan(muon_pos_pt/muon_pos_pz)+np.pi/2 #lepton polar angle with 
 theta_neg = np.arctan(muon_neg_pt/muon_neg_pz)+np.pi/2
 x_pos = 2*muon_pos_E/m_t #reduced lepton energy where the fraction of the top velocity have been approx to be 1
 x_neg = 2*muon_neg_E/m_t
-
+print("---creating the histograms---")
 #histogram the data
 #for the positively charged muons
 fig = plt.figure()          #create a canvas, tell matplotlib it's 3d
@@ -49,7 +49,7 @@ dx = xedges [1] - xedges [0]
 dy = yedges [1] - yedges [0]
 dz = hist.flatten()
 
-ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color=rgba, zsort='average')
+ax.bar3d(xpos, ypos, zpos, dx, dy, dz, zsort='average')
 plt.title(r"$S^{0}(x,cos(\Theta)$ for $\mu^{+}$")
 plt.xlabel("x")
 plt.ylabel(r"$cos(\Theta)$")
@@ -70,7 +70,7 @@ dx = xedges [1] - xedges [0]
 dy = yedges [1] - yedges [0]
 dz = hist.flatten()
 
-ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color=rgba, zsort='average')
+ax.bar3d(xpos, ypos, zpos, dx, dy, dz, zsort='average')
 plt.title(r"$S^{0}(x,cos(\Theta)$ for $\mu^{-}")
 plt.xlabel("x")
 plt.ylabel(r"$cos(\Theta)$")
